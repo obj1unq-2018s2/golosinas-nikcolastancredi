@@ -37,4 +37,6 @@ object mariano {
 		return gustosDeseados.filter{elemento => not listaGustosGolosinas.contains(elemento) }
 		
 		}
+		
+	//terminado 19/09 23:33
 }
