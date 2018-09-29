@@ -39,9 +39,9 @@ class Oblea {
 	method libreGluten() = false
 	method mordisco() {
 		if (peso > 70 ){
-			peso = peso * 0.5
+			peso -= peso * 0.5
 		}else {
-			peso = peso * 0.25
+			peso -= peso * 0.25
 		}
 	}  
 }
