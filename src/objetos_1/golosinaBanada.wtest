@@ -1,0 +1,17 @@
+import mariano.*
+import golosinas.*
+
+describe " test probando golosinas baniadas"{
+	var golosinaBaniada = new GolosinaBaniada()
+	var _chupetin = new Chupetin()
+	fixture{
+		golosinaBaniada.baniaA(_chupetin)	
+	}
+	
+	test "chupetin baniado"{
+		assert.equals(11,golosinaBaniada.peso())
+		assert.equals(4, golosinaBaniada.precio())
+		assert.equals("naranja", golosinaBaniada.gusto())
+		assert.equals(true,golosinaBaniada.libreGluten())
+	}
+}

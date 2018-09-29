@@ -3,6 +3,7 @@ import golosinas.*
 object mariano {
 	var property golosinas = []
 	
+	
 	method comprar(golosina) { 
 		golosinas.add(golosina)
 	}
@@ -33,10 +34,12 @@ object mariano {
 		golosinasDeseadas.filter{ elemento => not  golosinas.contains(elemento)}
 	
 	method gustosFaltantes(gustosDeseados){
-		var listaGustosGolosinas = golosinas.map{elemento => elemento.gusto()}
-		return gustosDeseados.filter{elemento => not listaGustosGolosinas.contains(elemento) }
-		
-		}
+		var listaGustosGolosinas = golosinas.map{ elemento => elemento.gusto()}.withoutDuplicates()
+		// return gustosDeseados.filter{elemento => not golosinas.sabores().contains(elemento)}  PREGUNTAR POR QUE NO ANDA ASI 
+		return gustosDeseados.filter{elemento => not listaGustosGolosinas.contains(elemento)}
+	}  
+	
+	// method gustosFaltantes(gustosDeseados) = gustosDeseados.filter{elemento => not golosinas.sabores().contains(elemento)}	
 		
 	//terminado 19/09 23:33
 }

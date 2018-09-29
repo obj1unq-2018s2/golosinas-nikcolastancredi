@@ -2,42 +2,48 @@ import golosinas.*
 import mariano.*
 
 describe "Tests de mariano" {
-
+	var chocolatito = new Chocolatin ( )
+	var _caramelo = new Caramelo()
+	var _bombon = new Bombon()
+	var _chupetin = new Chupetin()
+	var _alfajor = new Alfajor()
+	
 	fixture {
-		chocolatin.pesoInicial(100)
-		mariano.comprar(chocolatin)
-		mariano.comprar(caramelo)
-		mariano.comprar(bombon)
+		chocolatito.pesoInicial(100)
+		mariano.comprar(chocolatito)
+		mariano.comprar(_caramelo)
+		mariano.comprar(_bombon)
 	}
 
 	test "Test comprar" {
+		
 		assert.equals(3, mariano.golosinas().size())
-		assert.that(mariano.golosinas().contains(chocolatin))
-		assert.that(mariano.golosinas().contains(caramelo))
-		assert.that(mariano.golosinas().contains(bombon))
-		assert.notThat(mariano.golosinas().contains(chupetin))
+		assert.that(mariano.golosinas().contains(chocolatito))
+		assert.that(mariano.golosinas().contains(_caramelo))
+		assert.that(mariano.golosinas().contains(_bombon))
+		assert.notThat(mariano.golosinas().contains(_chupetin))
 	}
 	
 	test "Probar el chocolatin"{
-		chocolatin.mordisco()
-		assert.equals(98, chocolatin.peso())
-		assert.equals(100, chocolatin.pesoInicial())
+		chocolatito.mordisco()
+		assert.equals(98, chocolatito.peso())
+		assert.equals(100, chocolatito.pesoInicial())
 	} 
 	
 	test "Probar golosinas" {
 		 
-		assert.equals(100, chocolatin.peso())
-		assert.equals(5, caramelo.peso())
-		assert.equals(15, bombon.peso())
+		assert.equals(100, chocolatito.peso())
+		assert.equals(5, _caramelo.peso())
+		assert.equals(15, _bombon.peso())
 		mariano.probarGolosinas()		
-		assert.equals(98, chocolatin.peso())
-		assert.equals(4, caramelo.peso())
-		assert.equals(11, bombon.peso())
+		assert.equals(98, chocolatito.peso())
+		assert.equals(4, _caramelo.peso())
+		assert.equals(11, _bombon.peso())
 	}
 	
 	test "Golosinas Faltantes"{
-		assert.equals([chocolatin,caramelo,bombon],mariano.golosinas())
-		assert.equals([alfajor],mariano.golosinasFaltantes([alfajor,bombon,caramelo]))
+		assert.equals([chocolatito,_caramelo,_bombon],mariano.golosinas())
+		assert.equals([_alfajor],mariano.golosinasFaltantes([_alfajor,_bombon,_caramelo]))
 		
 				
 	}
@@ -50,30 +56,32 @@ describe "Tests de mariano" {
 	}
 	
 	test "Precios cuidados"{
-		mariano.desechar(chocolatin)
+		mariano.desechar(chocolatito)
 		assert.that (mariano.preciosCuidados())
 	}	
 	
 	test " Golosina de un Sabor"{
-		mariano.comprar(alfajor)
-		assert.equals([chocolatin,caramelo,bombon,alfajor],mariano.golosinas())
-		assert.equals(chocolatin,mariano.golosinaDeSabor("chocolate")) 
+		mariano.comprar(_alfajor)
+		assert.equals([chocolatito,_caramelo,_bombon,_alfajor],mariano.golosinas())
+		assert.equals(chocolatito,mariano.golosinaDeSabor("chocolate")) 
 	} 
 	test "Golosinas de un Sabor" {
-		mariano.comprar(alfajor)
-		assert.equals([chocolatin,caramelo,bombon,alfajor],mariano.golosinas())
-		assert.equals([chocolatin,alfajor],mariano.golosinasDeSabor("chocolate"))
+		mariano.comprar(_alfajor)
+		assert.equals([chocolatito,_caramelo,_bombon,_alfajor],mariano.golosinas())
+		assert.equals([chocolatito,_alfajor],mariano.golosinasDeSabor("chocolate"))
 	}
 	test"Sabores"{
-		mariano.comprar(alfajor)
-		assert.equals([chocolatin,caramelo,bombon,alfajor],mariano.golosinas())
+		mariano.comprar(_alfajor)
+		assert.equals([chocolatito,_caramelo,_bombon,_alfajor],mariano.golosinas())
 		assert.equals(["chocolate","frutilla"],mariano.sabores())
 	}
 	test "Golosina mas Cara"{
-		assert.equals(chocolatin,mariano.golosinaMasCara())
+		assert.equals(chocolatito,mariano.golosinaMasCara())
 	}
 	test"Peso de la bolsa"{
 		assert.equals(120,mariano.pesoGolosinas())
 	}
+	
+
 }
 

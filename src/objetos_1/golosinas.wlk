@@ -1,4 +1,5 @@
-object bombon {
+
+class Bombon {
 	var peso = 15
 	method precio() = 5 
 	method peso() = peso 
@@ -7,7 +8,7 @@ object bombon {
 	method libreGluten() = true 
 }
 
-object alfajor {
+class Alfajor {
 	var peso = 300
 	method precio() = 12
 	method gusto() = "chocolate"
@@ -15,7 +16,7 @@ object alfajor {
 	method mordisco() { peso = peso * 0.8}
 }
 
-object caramelo {
+class Caramelo {
 	var property peso = 5 
 	method precio() = 1
 	method gusto() = "frutilla"
@@ -23,7 +24,7 @@ object caramelo {
 	method mordisco() { peso -= 1}
 }
 
-object chupetin {
+class Chupetin {
 	var property peso = 7
 	method precio() = 2
 	method gusto () = "naranja"
@@ -31,7 +32,7 @@ object chupetin {
 	method mordisco() ={ peso -= 1}
 }
 
-object oblea {
+class Oblea {
 	var property peso = 250
 	method precio() = 5
 	method gusto() = "vainilla"
@@ -45,8 +46,9 @@ object oblea {
 	}  
 }
 
-object chocolatin {
+class Chocolatin {
 	var property pesoInicial = null
+	
 	var  pesoActual =  null
 	method pesoInicial(cuanto) { 
 		pesoInicial = cuanto
@@ -60,7 +62,8 @@ object chocolatin {
 	
 }
 
-object golosinaBaniada {
+
+class GolosinaBaniada {
 	var golosinaInterior = null
 	var pesoBanio = 4
 	method baniaA(unaGolosina) { golosinaInterior = unaGolosina }
@@ -75,16 +78,19 @@ object golosinaBaniada {
 	method libreGluten() = golosinaInterior.libreGluten()	
 }
 
-object tuttifrutti {
+class Tuttifrutti {
 	var property peso = 5 
 	var gustosPosibles = ["frutilla","chocolate","naranja"]
-	var property gusto  = null
 	var property libreGluten = null 
+	var property gusto = gustosPosibles.first()
+	
+	
 	method precio()  = if (libreGluten) 7 else 10 
 	method mordisco(){
+		gustosPosibles.remove(gusto)
+		gustosPosibles.add(gusto) //  elimino el primero que le asigne cuando inicializo  la variable 
 	 	gusto = gustosPosibles.first() // toma el primer valor de la lista
-	 	gustosPosibles.remove(gusto) // lo borro
-	 	gustosPosibles.add(gusto) // lo guardo  en la ultima posicion
+	 	 
 	}
 }
 
