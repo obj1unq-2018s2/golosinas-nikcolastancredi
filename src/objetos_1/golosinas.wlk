@@ -9,11 +9,11 @@ class Bombon {
 }
 
 class Alfajor {
-	var peso = 300
+	var property peso = 300
 	method precio() = 12
 	method gusto() = "chocolate"
 	method libreGluten() = false 
-	method mordisco() { peso = peso * 0.8}
+	method mordisco() { peso -= peso * 0.2}
 }
 
 class Caramelo {
@@ -29,7 +29,7 @@ class Chupetin {
 	method precio() = 2
 	method gusto () = "naranja"
 	method libreGluten() = true
-	method mordisco() ={ peso -= 1}
+	method mordisco() { peso -= 1}
 }
 
 class Oblea {

@@ -1,0 +1,135 @@
+import golosinas.*
+
+describe " testing de todas las golosinas"{
+	var _bombon = new Bombon()
+	var _oblea = new Oblea()
+	var _tuttifrutti = new Tuttifrutti()
+	var _golosinaBaniada = new GolosinaBaniada()
+	var _alfajor = new Alfajor()
+	var _chupetin = new Chupetin()
+	var _caramelo = new Caramelo()
+	var _chocolatito = new Chocolatin()
+	var _chocolatote = new Chocolatin()
+	fixture{
+		_tuttifrutti.libreGluten(true)
+		_chocolatito.pesoInicial(40)
+		_chocolatote.pesoInicial(100)
+	}	
+	test "Bombon" {
+		assert.equals(15, _bombon.peso())
+		assert.equals(5, _bombon.precio())
+		_bombon.mordisco()
+		assert.equals(11, _bombon.peso())
+		_bombon.mordisco()
+		assert.equals(7.8, _bombon.peso())
+		assert.equals("frutilla", _bombon.gusto())
+		assert.that(_bombon.libreGluten())	
+	}
+		test "Oblea"{
+		assert.equals("vainilla",_oblea.gusto())
+		assert.that(not _oblea.libreGluten())
+		assert.equals(250, _oblea.peso())
+		assert.equals(5,_oblea.precio())
+		_oblea.mordisco()
+		assert.equals (125, _oblea.peso())
+		_oblea.mordisco()
+		assert.equals(62.5,_oblea.peso())
+		_oblea.mordisco()
+		assert.equals(46.875,_oblea.peso())
+	}
+	
+	test "Tuttifrutti  libre de gluten" {
+		assert.equals(5,_tuttifrutti.peso())
+		assert.that(_tuttifrutti.libreGluten())
+		assert.equals(7,_tuttifrutti.precio())
+		assert.equals ("frutilla",_tuttifrutti.gusto())
+		_tuttifrutti.mordisco()
+		assert.equals ("chocolate", _tuttifrutti.gusto())
+		_tuttifrutti.mordisco()
+		assert.equals ("naranja", _tuttifrutti.gusto())
+		_tuttifrutti.mordisco()
+		assert.equals ("frutilla", _tuttifrutti.gusto())
+	
+
+	}
+	
+	test "Chocolatin de 40"{
+		assert.equals(40,_chocolatito.pesoInicial())
+		assert.equals("chocolate",_chocolatito.gusto())
+		assert.equals(20,_chocolatito.precio())
+		assert.that(not _chocolatito.libreGluten())
+		_chocolatito.mordisco()
+		assert.equals(40,_chocolatito.pesoInicial())
+		assert.equals(38,_chocolatito.peso())	
+					
+	}
+	
+	test "Chocolatin de 100"{
+		assert.equals(100,_chocolatote.pesoInicial())
+		assert.equals("chocolate",_chocolatote.gusto())
+		assert.equals(50,_chocolatote.precio())
+		assert.that(not _chocolatote.libreGluten())
+		_chocolatote.mordisco()
+		assert.equals(100,_chocolatote.pesoInicial())
+		assert.equals(98,_chocolatote.peso())
+	}
+	
+	test "Tuttifrutti no libre de gluten"{
+		_tuttifrutti.libreGluten(false)
+		assert.equals(10,_tuttifrutti.precio())
+	}
+	
+	test "Chupetin baniado"{
+		_golosinaBaniada.baniaA(_chupetin)	
+		assert.equals(11,_golosinaBaniada.peso())
+		assert.equals(4, _golosinaBaniada.precio())
+		assert.equals("naranja", _golosinaBaniada.gusto())
+		assert.equals(true,_golosinaBaniada.libreGluten())
+	}
+	
+	test "Chocolatin baniado"{
+		_golosinaBaniada.baniaA(_chocolatote)	
+		assert.equals(104,_golosinaBaniada.peso())
+		assert.equals(52, _golosinaBaniada.precio())
+		assert.equals("chocolate", _golosinaBaniada.gusto())
+		assert.that(not _golosinaBaniada.libreGluten())
+	}
+	
+	test "Pastilla tuttifrutti baniada"{
+		_golosinaBaniada.baniaA(_tuttifrutti)	
+		assert.equals(9,_golosinaBaniada.peso())
+		assert.equals(9, _golosinaBaniada.precio())
+		assert.equals("frutilla", _golosinaBaniada.gusto())
+		_golosinaBaniada.mordisco()
+		assert.equals("chocolate", _golosinaBaniada.gusto())
+		assert.that(_golosinaBaniada.libreGluten())
+	}
+	
+	test "Alfajor"{
+		assert.equals(300,_alfajor.peso())
+		assert.equals(12,_alfajor.precio())
+		assert.that(not _alfajor.libreGluten())
+		_alfajor.mordisco()
+		assert.equals(240,_alfajor.peso())
+		assert.equals("chocolate", _alfajor.gusto())
+		
+	}
+	
+	test "Chupetin"{
+		assert.equals(7,_chupetin.peso())
+		assert.equals(2,_chupetin.precio())
+		assert.that( _chupetin.libreGluten())
+		_chupetin.mordisco()
+		assert.equals(6,_chupetin.peso())
+		assert.equals("naranja", _chupetin.gusto())
+	}
+	
+	test "Caramelo"{
+		assert.equals(5,_caramelo.peso())
+		assert.equals(1,_caramelo.precio())
+		assert.that( _caramelo.libreGluten())
+		_caramelo.mordisco()
+		assert.equals(4,_caramelo.peso())
+		assert.equals("frutilla", _caramelo.gusto())
+	}
+}
