@@ -41,5 +41,9 @@ object mariano {
 	
 	// method gustosFaltantes(gustosDeseados) = gustosDeseados.filter{elemento => not golosinas.sabores().contains(elemento)}	
 		
-	//terminado 19/09 23:33
+	method baniar(unaGolosina){
+		var _golosinaBaniada = new GolosinaBaniada()
+		_golosinaBaniada.baniaA(unaGolosina)
+		golosinas.add(_golosinaBaniada)
+	}
 }
